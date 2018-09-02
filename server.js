@@ -4,7 +4,8 @@ const expressObj = require('express');
 const hbsObj = require('hbs');
 const fsObj = require('fs');
 //to enable heroku to assign ports
-const port = process.env.port || 8080; //if not port, then 8080 would be used
+const port = process.env.PORT || 8080; //if not port, then 8080 would be used
+
 
 var app = expressObj();
 
@@ -103,3 +104,4 @@ app.listen(port, () => {
     console.log('port enabled at ' + port);    
 });
 console.log('running');
+
