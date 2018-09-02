@@ -3,6 +3,8 @@
 const expressObj = require('express');
 const hbsObj = require('hbs');
 const fsObj = require('fs');
+//to enable heroku to assign ports
+const port = process.env.port || 8080; //if not port, then 8080 would be used
 
 var app = expressObj();
 
@@ -35,9 +37,9 @@ app.use( ( req,res,next) => {
 });
 
 
-app.use( (req,res,next) => {
-    res.render('maintenance.hbs');
-});
+// app.use( (req,res,next) => {
+//     res.render('maintenance.hbs');
+// });
 
 //use functiuon would use the middleware to render from the given directory
 //app.use is to register a middleware
@@ -97,5 +99,7 @@ app.get('/bad', (req,res) => {
     );
 }
 );
-app.listen(8080);
+app.listen(port, () => {
+    console.log('port enabled at ' + port);    
+});
 console.log('running');
